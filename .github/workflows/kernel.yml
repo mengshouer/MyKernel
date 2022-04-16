@@ -1,0 +1,29 @@
+name: kernel
+
+on:
+  workflow_dispatch:
+
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v3
+
+      # Compile kernel with linux-tkg
+      - name: Compile kernel with linux-tkg
+        run: |
+          git clone https://github.com/Frogging-Family/linux-tkg.git
+          mv -f customization.cfg linux-tkg/customization.cfg
+          cd linux-tkg
+          echo -e "n\n" | sudo bash install.sh install
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: DEBS
+          path: linux-tkg/DEBS/*.deb
