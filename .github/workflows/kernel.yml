@@ -17,6 +17,7 @@ jobs:
       # Compile kernel with linux-tkg
       - name: Compile kernel with linux-tkg
         run: |
+          sudo apt update
           git clone https://github.com/Frogging-Family/linux-tkg.git
           sed -i -e "s/_version=\"\"/_version=\"${{ secrets.version }}\"/" customization.cfg
           mv -f customization.cfg linux-tkg/customization.cfg
