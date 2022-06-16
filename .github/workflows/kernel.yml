@@ -36,5 +36,5 @@ jobs:
           name: DEBS
           path: |
             linux-tkg/DEBS/linux-headers*.deb
-            linux-tkg/DEBS/linux-image-*pds_.deb
+            linux-tkg/DEBS/linux-image-*pds_*.deb
             linux-tkg/DEBS/linux-libc-dev*.deb
