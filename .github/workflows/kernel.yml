@@ -34,4 +34,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: DEBS
-          path: linux-tkg/DEBS/*.deb
+          path: |
+            linux-tkg/DEBS/linux-headers*.deb
+            linux-tkg/DEBS/linux-image-*pds_.deb
+            linux-tkg/DEBS/linux-libc-dev*.deb
