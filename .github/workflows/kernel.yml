@@ -1,4 +1,4 @@
-name: kernel-ubuntu
+name: kernel
 
 on:
   workflow_dispatch:
@@ -13,11 +13,15 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
-
-      # Compile kernel with linux-tkg
-      - name: Compile ubuntu kernel with linux-tkg
+      
+      - name: clean the space
         run: |
           sudo apt update
+          curl -fsSL https://raw.githubusercontent.com/apache/flink/master/tools/azure-pipelines/free_disk_space.sh | sudo bash
+
+      # Compile kernel with linux-tkg
+      - name: Compile kernel with linux-tkg
+        run: |
           git clone https://github.com/Frogging-Family/linux-tkg.git
           sed -i -e "s/_version=\"\"/_version=\"${{ secrets.version }}\"/" customization.cfg
           mv -f customization.cfg linux-tkg/customization.cfg
@@ -30,4 +34,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: DEBS-Ubuntu
-          path: linux-tkg/DEBS/*.deb
+          path: |
+            linux-tkg/DEBS/linux-headers*.deb
+            linux-tkg/DEBS/linux-image-*pds_.deb
+            linux-tkg/DEBS/linux-libc-dev*.deb
