@@ -1,6 +1,8 @@
-name: kernel
+name: kernel-5.18
 
 on:
+  schedule:
+    cron: "0 3 7 * * *"
   workflow_dispatch:
 
 jobs:
@@ -13,7 +15,7 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
-      
+
       - name: clean the space
         run: |
           sudo apt update
@@ -23,7 +25,7 @@ jobs:
       - name: Compile kernel with linux-tkg
         run: |
           git clone https://github.com/Frogging-Family/linux-tkg.git
-          sed -i -e "s/_version=\"\"/_version=\"${{ secrets.version }}\"/" customization.cfg
+          sed -i -e "s/_version=\"\"/_version=\"5.18\"/" customization.cfg
           mv -f customization.cfg linux-tkg/customization.cfg
           cd linux-tkg
           sed -i -e "s/_timed_build() {/_timed_build() {\n    sed -i -e 's\/# CONFIG_X86_X32 is not set\/CONFIG_X86_X32=y\/' .\/.config\n    sed -i -e 's\/CONFIG_ZSWAP_COMPRESSOR_DEFAULT=".*?"\/CONFIG_ZSWAP_COMPRESSOR_DEFAULT="zstd"\/' .\/.config\n    sed -i -e 's\/CONFIG_ZSWAP_COMPRESSOR_DEFAULT_.*?=y\/# CONFIG_ZSWAP_COMPRESSOR_DEFAULT_LZ4 is not set\/g' .\/.config\n    sed -i -e 's\/# CONFIG_ZSWAP_COMPRESSOR_DEFAULT_ZSTD is not set\/CONFIG_ZSWAP_COMPRESSOR_DEFAULT_ZSTD=y\/' .\/.config/" install.sh
@@ -33,7 +35,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-artifact@v2
         with:
-          name: DEBS
+          name: DEBS-5.18
           path: |
             linux-tkg/DEBS/linux-headers*.deb
             linux-tkg/DEBS/linux-image-*pds_*.deb
