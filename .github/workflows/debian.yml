@@ -2,7 +2,7 @@ name: kernel-5.18
 
 on:
   schedule:
-    - cron: "0 3 */7 * *"
+    - cron: "0 16 */7 * *"
   workflow_dispatch:
 
 jobs:
