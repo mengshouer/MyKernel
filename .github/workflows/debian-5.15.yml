@@ -28,7 +28,7 @@ jobs:
           cd linux-tkg
           sed -i -e "s/_version=\"\"/_version=\"5.15\"/" customization.cfg
           bash ../rep.sh
-          sed -i -e "s/_timed_build() {/_timed_build() {\n    sed -i -e 's\/# CONFIG_X86_X32 is not set\/CONFIG_X86_X32=y\/' .\/.config\n    sed -i -e 's\/CONFIG_ZSWAP_COMPRESSOR_DEFAULT=".*?"\/CONFIG_ZSWAP_COMPRESSOR_DEFAULT="zstd"\/' .\/.config\n    sed -i -e 's\/CONFIG_ZSWAP_COMPRESSOR_DEFAULT_.*?=y\/# CONFIG_ZSWAP_COMPRESSOR_DEFAULT_LZ4 is not set\/g' .\/.config\n    sed -i -e 's\/# CONFIG_ZSWAP_COMPRESSOR_DEFAULT_ZSTD is not set\/CONFIG_ZSWAP_COMPRESSOR_DEFAULT_ZSTD=y\/' .\/.config/" install.sh
+          sed -i -e "s/_timed_build() {/_timed_build() {\n    sed -i -e 's\/CONFIG_ZSWAP_COMPRESSOR_DEFAULT=".*?"\/CONFIG_ZSWAP_COMPRESSOR_DEFAULT="zstd"\/' .\/.config\n    sed -i -e 's\/CONFIG_ZSWAP_COMPRESSOR_DEFAULT_.*?=y\/# CONFIG_ZSWAP_COMPRESSOR_DEFAULT_LZ4 is not set\/g' .\/.config\n    sed -i -e 's\/# CONFIG_ZSWAP_COMPRESSOR_DEFAULT_ZSTD is not set\/CONFIG_ZSWAP_COMPRESSOR_DEFAULT_ZSTD=y\/' .\/.config/" install.sh
           sed -i -e "s/read -p .*_install/_install=\"n\"/g" install.sh 
           sudo ./install.sh install
 
