@@ -1,4 +1,4 @@
-name: kernel-5.18
+name: kernel-5.x
 
 on:
   schedule:
@@ -35,7 +35,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-artifact@v2
         with:
-          name: DEBS-5.18
+          name: kernel-5.x
           path: |
             linux-tkg/DEBS/linux-headers*.deb
             linux-tkg/DEBS/linux-image-*pds_*.deb
