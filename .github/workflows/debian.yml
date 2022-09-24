@@ -1,8 +1,6 @@
 name: kernel-5.x
 
 on:
-  schedule:
-    - cron: "0 16 */7 * *"
   workflow_dispatch:
     inputs:
       kernel_version:
