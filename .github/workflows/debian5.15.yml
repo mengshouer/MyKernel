@@ -34,7 +34,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-artifact@v2
         with:
-          name: kernel-${{ github.event.inputs.kernel_version }}
+          name: kernel-5.15
           path: |
             linux-tkg/DEBS/linux-headers*.deb
             linux-tkg/DEBS/linux-image-*pds_*.deb
