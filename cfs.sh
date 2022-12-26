@@ -1,0 +1,15 @@
+sed -i -e "s/_distro=.*/_distro=\"Debian\"/" customization.cfg
+sed -i -e "s/_menunconfig=.*/_menunconfig=\"false\"/" customization.cfg
+sed -i -e "s/_diffconfig=.*/_diffconfig=\"false\"/" customization.cfg
+sed -i -e "s/_dracut_options=.*/_dracut_options=\"--zstd\"/" customization.cfg
+sed -i -e "s/_cpusched=.*/_cpusched=\"cfs\"/" customization.cfg
+sed -i -e "s/_compiler=.*/_compiler=\"gcc\"/" customization.cfg
+sed -i -e "s/_sched_yield_type=.*/_sched_yield_type=\"1\"/" customization.cfg
+sed -i -e "s/_rr_interval=.*/_rr_interval=\"default\"/" customization.cfg
+sed -i -e "s/_tickless=.*/_tickless=\"2\"/" customization.cfg
+sed -i -e "s/_acs_override=.*/_acs_override=\"false\"/" customization.cfg
+sed -i -e "s/_anbox=.*/_anbox=\"false\"/" customization.cfg
+sed -i -e "s/_compileroptlevel=.*/_compileroptlevel=\"2\"/" customization.cfg
+sed -i -e "s/_processor_opt=.*/_processor_opt=\"generic\"/" customization.cfg
+sed -i -e "s/_timer_freq=.*/_timer_freq=\"1000\"/" customization.cfg
+sed -i -e "s/_tcp_cong_alg=.*/_tcp_cong_alg=\"bbr\"/" customization.cfg
