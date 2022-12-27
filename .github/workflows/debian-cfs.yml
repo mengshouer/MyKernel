@@ -41,5 +41,5 @@ jobs:
           name: kernel-cfs-${{ github.event.inputs.kernel_version }}
           path: |
             linux-tkg/DEBS/linux-headers*.deb
-            linux-tkg/DEBS/linux-image*.deb
+            linux-tkg/DEBS/linux-image*cfs_*.deb
             linux-tkg/DEBS/linux-libc*.deb
