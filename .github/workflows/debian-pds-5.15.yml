@@ -1,4 +1,4 @@
-name: kernel-5.15
+name: kernel-pds-5.15
 
 on:
   schedule:
