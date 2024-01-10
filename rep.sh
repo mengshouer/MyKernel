@@ -9,6 +9,7 @@ sed -i -e "s/_rr_interval=.*/_rr_interval=\"2\"/" customization.cfg
 sed -i -e "s/_tickless=.*/_tickless=\"1\"/" customization.cfg
 sed -i -e "s/_acs_override=.*/_acs_override=\"false\"/" customization.cfg
 sed -i -e "s/_anbox=.*/_anbox=\"false\"/" customization.cfg
+sed -i -e "s/_waydroid=.*/_waydroid=\"false\"/" customization.cfg
 sed -i -e "s/_compileroptlevel=.*/_compileroptlevel=\"2\"/" customization.cfg
 sed -i -e "s/_processor_opt=.*/_processor_opt=\"generic\"/" customization.cfg
 sed -i -e "s/_timer_freq=.*/_timer_freq=\"500\"/" customization.cfg
