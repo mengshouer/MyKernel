@@ -6,7 +6,7 @@ on:
       kernel_version:
         description: 'Kernel version.'
         required: true
-        default: 6.1
+        default: '6.1'
   schedule:
     - cron: '0 16 */7 * *'
 
